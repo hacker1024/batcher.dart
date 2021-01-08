@@ -28,8 +28,7 @@ example, you want to download a list of files in batches with `package:http`:
 
 ```dart
 // A predetermined list of file URIs.
-final fileUris = <Uri>[ /*...*/
-];
+final fileUris = <Uri>[ /*...*/];
 
 // Use a single client to speed up mass connections.
 final client = http.Client();
@@ -57,7 +56,7 @@ With these two things, futures can be batched in a few different ways:
 
 #### Future-based batching
 
-In this way, queued results are delivered via futures returned by functions.
+In this way, queued results are delivered via futures returned by `get` functions.
 
 ```dart
 // Create a batcher with 16 threads.
