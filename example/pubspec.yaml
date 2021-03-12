@@ -6,15 +6,12 @@ version: 0.1.0
 publish_to: 'none'
 
 environment:
-  sdk: '>=2.12.0-0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   batcher:
     path: '..'
-  http:
-    git:
-      url: 'git://github.com/dart-lang/http.git'
-      ref: 'd473635f0dbb72936664696162127c2209986356'
+  http: ^0.13.0
 
 dev_dependencies:
   pedantic: ^1.10.0-nullsafety.3
