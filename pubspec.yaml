@@ -1,7 +1,7 @@
 name: batcher
 description: A package to queue futures and resolve them in batches.
 version: 0.1.0
-# homepage: https://www.example.com
+homepage: https://github.com/hacker1024/batcher.dart
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
