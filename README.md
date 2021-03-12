@@ -11,7 +11,7 @@ Add the package to your `pubspec.yaml`:
 ```yaml
 dependencies:
   ...
-  batcher: ^0.1.0-nullsafety.1
+  batcher: ^0.1.0
 ```
 
 And import it:
