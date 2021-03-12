@@ -50,7 +50,7 @@ void main() async {
 
   // // -- Change the thread count --
   // Start a batch (with more generators to show the effects).
-  print('Goint to change the thread count...');
+  print('Going to change the thread count...');
   final batcher2 = FutureBatcher(threadCount);
   final futures2 = batcher2.getAll(generators + generators);
   // Start printing results.
