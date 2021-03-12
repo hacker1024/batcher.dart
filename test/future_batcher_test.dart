@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:batcher/batcher.dart';
-import 'package:pedantic/pedantic.dart';
 import 'package:test/test.dart';
 
 // Parameters for batch tests.
@@ -288,8 +287,7 @@ void main() {
             'wait',
             () async {
               Future<void> run(StreamingFutureBatcher batcher) async {
-                unawaited(
-                    batcher.get(() async => throw const FormatException()));
+                batcher.get(() async => throw const FormatException());
                 expect(
                   batcher.results,
                   emitsError(isFormatException),
