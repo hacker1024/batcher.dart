@@ -59,7 +59,7 @@ class StreamingFutureBatcher<T> extends FutureBatcher<T>
   }
 
   @override
-  void add(generator) {
+  void add(BatchedFutureGenerator<T> generator) {
     super.add(_register(generator));
   }
 

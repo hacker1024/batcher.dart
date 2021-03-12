@@ -24,7 +24,7 @@ Future<List<T>> awaitToList<T>(
   Iterable<BatchedFutureGenerator<T>> generators,
 ) async =>
     [
-      for (final future in FutureBatcher(threadCount).getAll(generators))
+      for (final future in FutureBatcher<T>(threadCount).getAll(generators))
         await future
     ];
 
@@ -139,7 +139,7 @@ void main() {
         final generators = valuesToGenerate.map((i) => () async => i);
 
         final threadCountChangePoint = size ~/ 2;
-        final batcher = FutureBatcher(initialThreadCount);
+        final batcher = FutureBatcher<int>(initialThreadCount);
         for (final future in batcher.getAll(generators)) {
           final result = await future;
           if (result == threadCountChangePoint) {

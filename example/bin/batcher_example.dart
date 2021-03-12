@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:batcher/batcher.dart';
 import 'package:http/http.dart';
 
-void main() async {
+Future<void> main() async {
   // Create a client for HTTP requests.
   final client = Client();
 
@@ -26,7 +26,9 @@ void main() async {
   // Generate a list of batched futures.
   final futures1 = generators.batch(threadCount);
   // Await and print them.
-  futures1.forEach((future) async => print(await future));
+  for (final future in futures1) {
+    future.then(print);
+  }
   // Wait for everything to finish before continuing.
   await Future.wait(futures1);
   print('Done.\n');
@@ -37,14 +39,18 @@ void main() async {
   // Add, print, and await one lot of countries.
   print('First lot...');
   final lot1 = batcher1.getAll(generators);
-  lot1.forEach((future) async => print(await future));
+  for (final future in lot1) {
+    future.then(print);
+  }
   await Future.wait(lot1);
   // Wait for two seconds.
   await Future.delayed(const Duration(seconds: 2));
   print('\nSecond lot...');
   // Do it again!
   final lot2 = batcher1.getAll(generators);
-  lot2.forEach((future) async => print(await future));
+  for (final future in lot2) {
+    future.then(print);
+  }
   await Future.wait(lot2);
   print('Done.\n');
 
@@ -54,7 +60,9 @@ void main() async {
   final batcher2 = FutureBatcher(threadCount);
   final futures2 = batcher2.getAll(generators + generators);
   // Start printing results.
-  futures2.forEach((future) async => print(await future));
+  for (final future in futures2) {
+    future.then(print);
+  }
   // Two seconds in, change the thread count!
   await Future.delayed(const Duration(seconds: 2));
   batcher2.threadCount = 6;
@@ -85,7 +93,7 @@ final apiUri = Uri(
 );
 
 Future<String> _getCountry(Client client) async =>
-    jsonDecode((await client.get(apiUri)).body)[0];
+    jsonDecode((await client.get(apiUri)).body)[0] as String;
 
 // Other (rate limited) APIs
 /*
