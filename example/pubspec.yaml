@@ -1,6 +1,5 @@
-name: multi_future_example
-description: An example for multi_future.
-version: 0.1.0
+name: batcher_example
+description: An example for batcher.
 homepage: https://github.com/hacker1024/batcher.dart/tree/master/example
 
 publish_to: 'none'
